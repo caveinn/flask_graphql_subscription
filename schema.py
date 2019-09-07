@@ -19,6 +19,7 @@ class Subscription(graphene.ObjectType):
     random_int = graphene.Field(RandomType)
 
     def resolve_count_seconds(root, info, up_to=5):
+        print("callled")
         return Observable.interval(1000)\
                          .map(lambda i: "{0}".format(i))\
                          .take_while(lambda i: int(i) <= up_to)

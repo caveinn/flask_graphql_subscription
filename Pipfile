@@ -12,6 +12,7 @@ flask-graphql = "*"
 gevent = "*"
 flask-sockets = "*"
 graphql-ws = "*"
+flask-sokets = "*"
 
 [requires]
 python_version = "3.7"

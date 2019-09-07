@@ -1,14 +1,9 @@
-from flask import Flask, make_response
-from flask_graphql import GraphQLView
+from flask import Flask
 from graphql.backend import GraphQLCoreBackend
 from flask_sockets import Sockets
 from graphql_ws.gevent import  GeventSubscriptionServer
-from werkzeug.debug import DebuggedApplication
-from gevent.pywsgi import WSGIServer
-from geventwebsocket.handler import WebSocketHandler
 
 from schema import schema
-from werkzeug.serving import run_with_reloader
 from overidenview import OveridenView
 
 
@@ -30,7 +25,6 @@ app.app_protocol = lambda environ_path_info: 'graphql-ws'
 
 @sockets.route('/subscriptions')
 def echo_socket(ws):
-    print('working')
     subscription_server.handle(ws)
     return []
 
